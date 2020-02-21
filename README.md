@@ -66,22 +66,28 @@ For creating a Redshift cluster, follow the next steps:
     we need to get a connection to out Redshift cluster.             
     
     ![cluster_info](resources/cluster_info.PNG)
-           
+   
+6. Go to the setup folder and execute 
 
-Open a terminal, and go to directory **etl** of the source files and execute the following command:
+    `python create_table.py`
+    
+    It will create the schema, staging and star tables      
+    
+    ![create_table](resources/create_table.PNG)     
+
+7. Open a terminal, and go to etl folder and execute the following command:
     
     `python etl.py`
     
-This project contains a one single executable file: **etl.py**. You will see an output like this:
+You will see an output like this:
 
 ![Etl output](resources/etl_process.PNG)
 
 The output contains:
 
     - Connection status
-    - Set up of schemas, staging, dimension and fact tables
-    - Status of database set up
     - Staging tables load status
+    - Fact and dimension load status
     - Closing resources message
         
 ## ##########################################
@@ -109,9 +115,13 @@ The output contains:
 
 **cluster/dwh.cfg**: It contains properties needed to create a cluster
 
-**etl/queries/sql_queries.py**: Contains all the required queries to create, load and delete tables and schemas
+**etl/sql_queries.py**: Contains all the required queries to load staging and star schema tables
 
-**etl/etl.py**: It contains the whole ETL process. It has a main method who invokes different function to get the job done.
+**etl/etl.py**: It contains the ETL process. It has a main method who invokes different function to get the job done.
+
+**setup/sql_queries.py**: Contains all the required queries to create staging, fact and dimension tables
+
+**setup/create_table.py**: It creates schema, staging, fact and dimension tables 
 
 **etl/resources/*.***: Images used in documentation
 
