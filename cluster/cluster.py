@@ -48,7 +48,7 @@ def get_role_arn(config):
     except Exception as e:
         print(e)
 
-    return role_arn
+    return iam_role(config, iam)
 
 
 def iam_role(config, iam):
